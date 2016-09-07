@@ -1,1 +1,5 @@
-MenuState = class(GameState)
+menuState = {}
+
+function menuState:draw()
+    
+end
