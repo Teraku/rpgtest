@@ -30,7 +30,7 @@ function class(superClass)
             end,
             
             --Constructor
-            init = function(...) end
+            init = function(self, ...) end
         }
     end
     

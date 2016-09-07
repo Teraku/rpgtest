@@ -1,4 +1,6 @@
 require "lib.class"
+require "class.Entity"
+require "class.Player"
 
 --HUMP libraries
 Gamestate = require "lib.hump.gamestate"
@@ -6,12 +8,13 @@ Timer = require "lib.hump.timer"
 Camera = require "lib.hump.camera"
 
 --Push, a library for proper resolution scaling
-local push = require "lib.push"
+push = require "lib.push"
 
 local gameWidth, gameHeight = 1440, 1080 --Should be sharp on 1920x1080 screens while still keeping 4:3.
+--local gameWidth, gameHeight = 1280, 720
 local windowWidth, windowHeight = love.window.getDesktopDimensions()
 
-local fullscreen = false
+local fullscreen = true
 if fullscreen then
     push:setupScreen(gameWidth, gameHeight, windowWidth, windowHeight, {fullscreen = true})
 else 
@@ -21,16 +24,11 @@ end
 
 function love.load(arg)
     
-end
-
-function love.update(dt)
+    require "gamestates.menuState"
+    require "gamestates.overworldState"
     
-end
-
-function love.draw()
-    push:apply("start")
-    
-    push:apply("end")
+    Gamestate.registerEvents()
+    Gamestate.switch(menuState)
 end
 
 function love.keypressed(key, scanCode, isRepeat)
