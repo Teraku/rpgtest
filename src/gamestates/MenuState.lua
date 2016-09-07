@@ -1,0 +1,1 @@
+MenuState = class(GameState)
