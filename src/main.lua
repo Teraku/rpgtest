@@ -1,6 +1,4 @@
 require "lib.class"
-require "class.Entity"
-require "class.Player"
 
 --HUMP libraries
 Gamestate = require "lib.hump.gamestate"
@@ -10,11 +8,14 @@ Camera = require "lib.hump.camera"
 --Push, a library for proper resolution scaling
 push = require "lib.push"
 
-local gameWidth, gameHeight = 1440, 1080 --Should be sharp on 1920x1080 screens while still keeping 4:3.
---local gameWidth, gameHeight = 1280, 720
+--Bump, a library for collision detection
+bump = require "lib.bump"
+
+--local gameWidth, gameHeight = 1440, 1080 --Should be sharp on 1920x1080 screens while still keeping 4:3.
+local gameWidth, gameHeight = 1280, 960
 local windowWidth, windowHeight = love.window.getDesktopDimensions()
 
-local fullscreen = true
+local fullscreen = false
 if fullscreen then
     push:setupScreen(gameWidth, gameHeight, windowWidth, windowHeight, {fullscreen = true})
 else 

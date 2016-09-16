@@ -1,12 +1,22 @@
 Entity = class()
 
-function Entity:init(x, y)
+function Entity:init(x, y, width, height)
     self.health = 10
-    self.speed = 100
+    self.speed = 200
     
     if x and y then
-        self.pos = {x, y}
+        self.x = x
+        self.y = y
     end
     
-    self.velocity = {0, 0}
+    if width and height then
+        self.width = width
+        self.height = height
+    end
+    
+    self.velocity = {x = 0, y = 0}
+end
+
+function Entity:update(dt)
+    return self.velocity
 end
